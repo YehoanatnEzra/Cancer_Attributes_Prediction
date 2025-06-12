@@ -1,6 +1,5 @@
-from src.load_and_split import load_and_split_part1
-from src.process_data import remove_cols, clean_data
-from src.labels_utils import LabelEncoder
+from load_and_split import split_part1_data
+from process_data import remove_cols, clean_data
 import numpy as np
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -21,7 +20,7 @@ print("\n Testing AdaBoost (with Decision Trees, multi-label classification)..."
 
 for seed in [0, 1, 2, 3, 4]:
     print(f"\nSeed: {seed}")
-    x_train, x_dev, y_train_raw, y_dev_raw, encoder = load_and_split_part1(train_feats, labels_0, seed)
+    x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_feats, labels_0, seed)
 
     # Clean features
     x_train = clean_data(remove_cols(x_train))

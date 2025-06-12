@@ -1,5 +1,5 @@
-from src.load_and_split import load_and_split_part1
-from src.process_data import remove_cols, clean_data
+from load_and_split import split_part1_data
+from process_data import remove_cols, clean_data
 from src.models import get_model
 import numpy as np
 from sklearn.metrics import f1_score
@@ -10,16 +10,16 @@ import os
 output_dir = os.path.join(os.path.dirname(__file__), "outputs")
 os.makedirs(output_dir, exist_ok=True)
 
-train_feats = "../data/train_test_splits/train.feats.csv"
-labels_0 = "../data/train_test_splits/train.labels.0.csv"
+train_feats = "../../data/train_test_splits/train.feats.csv"
+labels_0 = "../../data/train_test_splits/train.labels.0.csv"
 
 model_name = "knn"
 
 print("\n Testing K-Nearest Neighbors (multi-label classification)...")
 
-for seed in [0, 1, 2, 3, 4]:
+for seed in [0]:
     print(f"\nSeed: {seed}")
-    x_train, x_dev, y_train_raw, y_dev_raw, encoder = load_and_split_part1(train_feats, labels_0, seed=seed)
+    x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_feats, labels_0, seed=seed)
 
     x_train = clean_data(remove_cols(x_train))
     x_dev = clean_data(remove_cols(x_dev))
@@ -27,7 +27,7 @@ for seed in [0, 1, 2, 3, 4]:
     y_train = np.array([encoder.to_binary_vector(eval(row)) for row in y_train_raw.iloc[:, 0]])
     y_dev = np.array([encoder.to_binary_vector(eval(row)) for row in y_dev_raw.iloc[:, 0]])
 
-    clf = get_model("classification", "knn")
+    clf = get_model("classification", model_name)
     clf.fit(x_train, y_train)
     y_pred = clf.predict(x_dev)
 

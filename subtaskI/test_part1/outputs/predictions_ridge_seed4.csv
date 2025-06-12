@@ -53,7 +53,7 @@ predicted_labels
 []
 []
 []
-[]
+['LYM - Lymph nodes']
 []
 []
 []
@@ -253,7 +253,7 @@ predicted_labels
 []
 []
 []
-"['BON - Bones', 'HEP - Hepatic', 'LYM - Lymph nodes']"
+"['BON - Bones', 'HEP - Hepatic']"
 []
 []
 []
@@ -519,7 +519,7 @@ predicted_labels
 []
 []
 []
-['BON - Bones']
+[]
 []
 ['HEP - Hepatic']
 []
@@ -583,7 +583,7 @@ predicted_labels
 []
 []
 []
-"['BON - Bones', 'HEP - Hepatic', 'LYM - Lymph nodes']"
+"['BON - Bones', 'HEP - Hepatic']"
 []
 []
 []
@@ -629,7 +629,7 @@ predicted_labels
 []
 []
 []
-"['HEP - Hepatic', 'PUL - Pulmonary']"
+['PUL - Pulmonary']
 []
 []
 []
@@ -785,7 +785,7 @@ predicted_labels
 []
 []
 []
-"['BON - Bones', 'PER - Peritoneum', 'SKI - Skin']"
+"['PER - Peritoneum', 'SKI - Skin']"
 []
 []
 []
@@ -989,7 +989,7 @@ predicted_labels
 []
 []
 []
-['BON - Bones']
+[]
 []
 []
 []
@@ -1904,7 +1904,7 @@ predicted_labels
 []
 []
 []
-[]
+['HEP - Hepatic']
 []
 []
 ['SKI - Skin']

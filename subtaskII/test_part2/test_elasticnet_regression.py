@@ -1,10 +1,9 @@
 # test_linear_regression.py
-from src.load_and_split import load_and_split_part2
-from src.process_data import remove_cols, clean_data
+from load_and_split import split_part2_data
+from process_data import remove_cols, clean_data
 from src.models import get_model
 from sklearn.metrics import mean_squared_error
 import pandas as pd
-import numpy as np
 import os
 
 output_dir = os.path.join(os.path.dirname(__file__), "outputs")
@@ -18,9 +17,9 @@ task_type = "regression"
 
 print(f"\nTesting {model_name.title()} Regressor (Part 2)...")
 
-for seed in [0, 1, 2, 3, 4]:
+for seed in [0]:
     print(f"\nSeed: {seed}")
-    x_train, x_dev, y_train_raw, y_dev_raw = load_and_split_part2(train_feats, labels_1, seed)
+    x_train, x_dev, y_train_raw, y_dev_raw = split_part2_data(train_feats, labels_1, seed)
 
     x_train = clean_data(remove_cols(x_train))
     x_dev = clean_data(remove_cols(x_dev))

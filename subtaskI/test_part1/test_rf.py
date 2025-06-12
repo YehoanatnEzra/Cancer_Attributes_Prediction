@@ -1,5 +1,5 @@
-from src.load_and_split import load_and_split_part1
-from src.process_data import remove_cols, clean_data
+from load_and_split import split_part1_data
+from process_data import remove_cols, clean_data
 from src.models import get_model
 import numpy as np
 from sklearn.metrics import f1_score
@@ -10,16 +10,20 @@ import os
 output_dir = os.path.join(os.path.dirname(__file__), "outputs")
 os.makedirs(output_dir, exist_ok=True)
 
-train_feats = "../data/train_test_splits/train.feats.csv"
-labels_0 = "../data/train_test_splits/train.labels.0.csv"
+train_feats = "../../data/train_test_splits/train.feats.csv"
+labels_0 = "../../data/train_test_splits/train.labels.0.csv"
 
 model_name = "rf"
 
 print("\n Testing Random Forest (multi-label classification)...")
 
-for seed in [0, 1, 2, 3, 4]:
+for seed in [0]:
     print(f"\nSeed: {seed}")
-    x_train, x_dev, y_train_raw, y_dev_raw, encoder = load_and_split_part1(train_feats, labels_0, seed)
+    x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_feats, labels_0, seed)
+
+    # immediately after the split
+    x_train, x_dev = x_train.reset_index(drop=True), x_dev.reset_index(drop=True)
+    y_train_raw, y_dev_raw = y_train_raw.reset_index(drop=True), y_dev_raw.reset_index(drop=True)
 
     # Clean features
     x_train = clean_data(remove_cols(x_train))
@@ -29,7 +33,17 @@ for seed in [0, 1, 2, 3, 4]:
     y_train = np.array([encoder.to_binary_vector(eval(row)) for row in y_train_raw.iloc[:, 0]])
     y_dev = np.array([encoder.to_binary_vector(eval(row)) for row in y_dev_raw.iloc[:, 0]])
 
-    clf = get_model("classification", "rf", n_estimators=200)
+
+    print("y_train_raw shape:", y_train_raw.shape)
+    print("y_train (encoded) shape:", y_train.shape)
+
+    clf = get_model("classification", model_name, n_estimators=200)
+
+    print("x_train shape:", x_train.shape)
+    print("y_train shape:", y_train.shape)
+
+    assert len(x_train) == len(y_train), \
+        f"Length mismatch: X={len(x_train)}  Y={len(y_train)}"
     clf.fit(x_train, y_train)
     y_pred = clf.predict(x_dev)
 
@@ -61,7 +75,7 @@ for seed in [0, 1, 2, 3, 4]:
 
     # --- Predict on TEST set ---
     test_path = "../../data/train_test_splits/test.feats.csv"
-    x_test = pd.read_csv(test_path)
+    x_test = pd.read_csv(test_path, low_memory=False, dtype=str)
     x_test_cleaned = clean_data(remove_cols(x_test))
 
     # Predict

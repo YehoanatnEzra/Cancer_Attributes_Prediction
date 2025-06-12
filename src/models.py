@@ -19,11 +19,11 @@ def get_model(task: str, model_name: str, **kwargs):
     """
     if task == "classification":
         model_map = {
-            "logistic": LogisticRegression(max_iter=1000),
-            "knn": KNeighborsClassifier(),
+            "logistic": LogisticRegression(max_iter=1000, C=1, penalty="l2"),
+            "knn": KNeighborsClassifier(n_neighbors=40,weights="distance"),
             "decision_tree": DecisionTreeClassifier(),
-            "rf": RandomForestClassifier(n_estimators=200, random_state=1),
-            "ridge": RidgeClassifier()
+            "rf": RandomForestClassifier(random_state=1),
+            "ridge": RidgeClassifier(alpha=0.2,tol=1e-3,solver="auto"),
         }
         base_model = model_map.get(model_name)
         if base_model is None:
