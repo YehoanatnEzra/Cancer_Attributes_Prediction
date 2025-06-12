@@ -1,5 +1,10 @@
+"""
+Module for loading and splitting data for the IML Hackathon project.
+"""
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from src.labels_utils import LabelEncoder
+
 
 def flatten(lst):
     """
@@ -25,11 +30,11 @@ def initilaize_labels(Y):
 def load_and_split_part1(filename_train, filename_labels_0):
     """
     Load and split the data for part 1 of the task
-    
+
     Args:
         filename_train (str): Path to the training data CSV file
         filename_labels_0 (str): Path to the labels_0 CSV file
-        
+
     Returns:
         tuple: (x_train, x_dev, labels_0_train, labels_0_dev)
     """
@@ -43,6 +48,10 @@ def load_and_split_part1(filename_train, filename_labels_0):
     initilaize_labels(train_labels_0)
     train_labels_0 = train_labels_0[~ind]
 
+    # Use LabelEncoder
+    encoder = LabelEncoder()
+    encoder.initialize(train_labels_0)
+
     # Split the data
     x_train, x_dev, labels_0_train, labels_0_dev = train_test_split(
         train, train_labels_0,
@@ -50,7 +59,7 @@ def load_and_split_part1(filename_train, filename_labels_0):
         random_state=42
     )
 
-    return x_train, x_dev, labels_0_train, labels_0_dev
+    return x_train, x_dev, labels_0_train, labels_0_dev, encoder
 
 def load_and_split_part2(filename_train, filename_labels_1):
     """
