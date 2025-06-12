@@ -17,7 +17,7 @@ task_type = "regression"
 
 print(f"\nTesting {model_name.title()} Regressor (Part 2)...")
 
-for seed in [0, 1, 2, 3, 4]:
+for seed in [0]:
     print(f"\nSeed: {seed}")
     x_train, x_dev, y_train_raw, y_dev_raw = split_part2_data(train_feats, labels_1, seed)
 

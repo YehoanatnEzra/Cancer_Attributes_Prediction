@@ -1,5 +1,6 @@
 README.txt - contains a file list and a brief description of each file.
 USERS.txt - contains the team members logins and IDs. Use one line per student, in the
+project.pdf - our full project overview, takeaways and summary.
 format: login, ID.
 load_and_split.py - module to load the data and split it.
 process_data.py - module to process the data (remove unnecessary columns, fill empty values, quantize..)
