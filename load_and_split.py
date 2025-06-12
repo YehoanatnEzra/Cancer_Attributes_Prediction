@@ -1,13 +1,26 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def initilaize_labels(labels_df):
+def flatten(lst):
     """
-    Initialize labels dataframe by setting all values to 0
+    Flatten a nested list
     """
-    for col in labels_df.columns:
-        if col != 'id-hushed_internalpatientid':
-            labels_df[col] = 0
+    return [item for sublist in lst for item in sublist]
+
+def initilaize_labels(Y):
+    """
+    Initialize labels and create mapping dictionaries
+    """
+    global label_to_ind
+    global ind_to_label
+    global num_of_label
+    col_name = Y.columns[0]
+    ls_origin_labels = [eval(val) for val in Y[col_name]]
+    labs = list(set(flatten(ls_origin_labels)))
+    inds = list(range(len(labs)))
+    label_to_ind = dict(zip(labs, inds))
+    ind_to_label = dict(zip(inds, labs))
+    num_of_label = len(labs)
 
 def load_and_split_part1(filename_train, filename_labels_0):
     """
@@ -66,4 +79,4 @@ def load_and_split_part2(filename_train, filename_labels_1):
         random_state=42
     )
 
-    return x_train, x_dev, labels_1_train, labels_1_dev 
+    return x_train, x_dev, labels_1_train, labels_1_dev
