@@ -15,7 +15,6 @@ def part_2(train_path, labels_1_path, test_path, output_dir):
     gold_df = pd.read_csv(labels_1_path)
     col_name = gold_df.columns[0]
 
-
     x_train, x_dev, y_train, y_dev = split_part2_data(train_path, labels_1_path, seed=0)
     x_train = clean_data(remove_cols(x_train))
     x_dev = clean_data(remove_cols(x_dev))

@@ -37,7 +37,7 @@ for seed in [0]:
     print("y_train_raw shape:", y_train_raw.shape)
     print("y_train (encoded) shape:", y_train.shape)
 
-    clf = get_model("classification", model_name, n_estimators=200)
+    clf = get_model("classification", model_name, n_estimators=400)
 
     print("x_train shape:", x_train.shape)
     print("y_train shape:", y_train.shape)

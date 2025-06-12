@@ -19,10 +19,10 @@ def get_model(task: str, model_name: str, **kwargs):
     """
     if task == "classification":
         model_map = {
-            "logistic": LogisticRegression(max_iter=1000, C=1, penalty="l2"),
-            "knn": KNeighborsClassifier(n_neighbors=40,weights="distance"),
-            "decision_tree": DecisionTreeClassifier(),
-            "rf": RandomForestClassifier(random_state=1),
+            "logistic": LogisticRegression(max_iter=1000, C=0.1),
+            "knn": KNeighborsClassifier(n_neighbors=40,weights="uniform"),
+            "decision_tree": DecisionTreeClassifier(max_depth=100, min_samples_split=3, min_samples_leaf=2),
+            "rf": RandomForestClassifier(random_state=1, n_estimators=400),
             "ridge": RidgeClassifier(alpha=0.2,tol=1e-3,solver="auto"),
         }
         base_model = model_map.get(model_name)

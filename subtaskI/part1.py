@@ -2,6 +2,8 @@ import sys
 import os
 import numpy as np
 import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
 from load_and_split import split_part1_data
 from sklearn.ensemble import RandomForestClassifier
 from process_data import remove_cols, clean_data
@@ -14,7 +16,6 @@ def part_1(train_path, labels_0_path, test_path, output_dir):
     # Load the gold file temporarily to get the column name
     gold_df = pd.read_csv(labels_0_path)
     col_name = gold_df.columns[0]
-
 
     x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_path, labels_0_path, seed=3)
     x_train = clean_data(remove_cols(x_train))

@@ -19,11 +19,17 @@ print("\n logistic (multi-label classification)...")
 
 for seed in [0]:
     print(f"\nSeed: {seed}")
-    x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_feats, labels_0, seed=seed)
+    x_train, x_dev, y_train_raw, y_dev_raw, encoder = split_part1_data(train_feats, labels_0, seed)
 
+    # immediately after the split
+    x_train, x_dev = x_train.reset_index(drop=True), x_dev.reset_index(drop=True)
+    y_train_raw, y_dev_raw = y_train_raw.reset_index(drop=True), y_dev_raw.reset_index(drop=True)
+
+    # Clean features
     x_train = clean_data(remove_cols(x_train))
     x_dev = clean_data(remove_cols(x_dev))
 
+    # Convert labels
     y_train = np.array([encoder.to_binary_vector(eval(row)) for row in y_train_raw.iloc[:, 0]])
     y_dev = np.array([encoder.to_binary_vector(eval(row)) for row in y_dev_raw.iloc[:, 0]])
 
