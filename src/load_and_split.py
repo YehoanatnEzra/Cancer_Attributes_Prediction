@@ -27,7 +27,7 @@ def initilaize_labels(Y):
     ind_to_label = dict(zip(inds, labs))
     num_of_label = len(labs)
 
-def load_and_split_part1(filename_train, filename_labels_0):
+def load_and_split_part1(filename_train, filename_labels_0, seed=42):
     """
     Load and split the data for part 1 of the task
 
@@ -45,7 +45,6 @@ def load_and_split_part1(filename_train, filename_labels_0):
 
     # Load and process labels_0
     train_labels_0 = pd.read_csv(filename_labels_0)
-    initilaize_labels(train_labels_0)
     train_labels_0 = train_labels_0[~ind]
 
     # Use LabelEncoder
@@ -56,12 +55,12 @@ def load_and_split_part1(filename_train, filename_labels_0):
     x_train, x_dev, labels_0_train, labels_0_dev = train_test_split(
         train, train_labels_0,
         test_size=0.25,
-        random_state=42
+        random_state=seed
     )
 
     return x_train, x_dev, labels_0_train, labels_0_dev, encoder
 
-def load_and_split_part2(filename_train, filename_labels_1):
+def load_and_split_part2(filename_train, filename_labels_1, seed=42):
     """
     Load and split the data for part 2 of the task
     
@@ -85,7 +84,7 @@ def load_and_split_part2(filename_train, filename_labels_1):
     x_train, x_dev, labels_1_train, labels_1_dev = train_test_split(
         train, train_labels_1,
         test_size=0.25,
-        random_state=42
+        random_state=seed
     )
 
     return x_train, x_dev, labels_1_train, labels_1_dev
