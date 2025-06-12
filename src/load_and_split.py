@@ -36,7 +36,7 @@ def load_and_split_part1(filename_train, filename_labels_0, seed=42):
         tuple: (x_train, x_dev, labels_0_train, labels_0_dev)
     """
     # Load training data
-    train = pd.read_csv(filename_train)
+    train = pd.read_csv(filename_train, dtype=str)
     ind = train.duplicated(subset=['id-hushed_internalpatientid', 'אבחנה-Diagnosis date'])
     train = train[~ind]
 
@@ -69,7 +69,7 @@ def load_and_split_part2(filename_train, filename_labels_1, seed=42):
         tuple: (x_train, x_dev, labels_1_train, labels_1_dev)
     """
     # Load training data
-    train = pd.read_csv(filename_train)
+    train = pd.read_csv(filename_train, dtype=str)
     ind = train.duplicated(subset=['id-hushed_internalpatientid', 'אבחנה-Diagnosis date'])
     train = train[~ind]
 

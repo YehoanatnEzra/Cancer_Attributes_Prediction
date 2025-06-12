@@ -34,11 +34,13 @@ for seed in [0, 1, 2, 3, 4]:
     never_predicted = [encoder.ind_to_label[i] for i in range(encoder.num_labels) if pred_counts[i] == 0]
     print(f"❗ Never predicted labels ({len(never_predicted)}): {never_predicted[:5]}...")
 
-    # Convert predictions back to label strings
+    # Convert predictions and true labels back to string label lists
     y_pred_str = [encoder.from_binary_vector(row) for row in y_pred]
+    y_true_str = [encoder.from_binary_vector(row) for row in y_dev]
 
     # Format as stringified lists for CSV output
     df_out = pd.DataFrame({
+        'true_labels': [str(labs) for labs in y_true_str],
         'predicted_labels': [str(labs) for labs in y_pred_str]
     })
 
