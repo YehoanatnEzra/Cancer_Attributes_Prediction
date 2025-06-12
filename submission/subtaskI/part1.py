@@ -50,6 +50,6 @@ if __name__ == '__main__':
 
     np.random.seed(0)
 
-    part_1(train_path, labels_0_path, test_path, "./subtaskI")
+    part_1(train_path, labels_0_path, test_path, ".")
 
 
