@@ -8,6 +8,8 @@ import pandas as pd
 train_feats = "../data/train_test_splits/train.feats.csv"
 labels_0 = "../data/train_test_splits/train.labels.0.csv"
 
+model_name = "knn"
+
 print("\n Testing K-Nearest Neighbors (multi-label classification)...")
 
 for seed in [0, 1, 2, 3, 4]:
@@ -31,3 +33,19 @@ for seed in [0, 1, 2, 3, 4]:
     pred_counts = np.sum(y_pred, axis=0)
     never_predicted = [encoder.ind_to_label[i] for i in range(encoder.num_labels) if pred_counts[i] == 0]
     print(f"❗ Never predicted labels ({len(never_predicted)}): {never_predicted[:5]}...")
+
+    # Convert predictions back to label strings
+    y_pred_str = [encoder.from_binary_vector(row) for row in y_pred]
+
+    # Format as stringified lists for CSV output
+    df_out = pd.DataFrame({
+        'predicted_labels': [str(labs) for labs in y_pred_str]
+    })
+
+    # Optional: include index or dev IDs
+    # if 'id-hushed_internalpatientid' in y_dev_raw.columns:
+    #     df_out['patient_id'] = y_dev_raw['id-hushed_internalpatientid'].values
+
+    # Save to CSV — include model and seed in filename
+    df_out.to_csv(f"predictions_{model_name}_seed{seed}.csv", index=False)
+    print(f"📄 Saved predictions to predictions_{model_name}_seed{seed}.csv")
