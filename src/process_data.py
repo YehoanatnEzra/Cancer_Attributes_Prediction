@@ -10,20 +10,20 @@ def remove_cols(data_frame):
         'surgery before or after-Activity date',
         'surgery before or after-Actual activity',
         'אבחנה-Diagnosis date',
-        'אבחנה-Her2',
-        'אבחנה-Histological diagnosis',
+        'אבחנה-Her2', #
+        'אבחנה-Histological diagnosis', #
         'אבחנה-Nodes exam',
-        'אבחנה-Positive nodes',
+        'אבחנה-Positive nodes', #
         'אבחנה-Surgery date1',
         'אבחנה-Surgery date2',
         'אבחנה-Surgery date3',
-        'אבחנה-Surgery name1',
+        'אבחנה-Surgery name1', #
         'אבחנה-Surgery name2',
         'אבחנה-Surgery name3',
-        'אבחנה-Tumor depth',
-        'אבחנה-Tumor width',
-        'אבחנה-er',
-        'אבחנה-pr'
+        'אבחנה-Tumor depth', #2
+        'אבחנה-Tumor width', #2
+        'אבחנה-er', #2
+        'אבחנה-pr' #2
     ], axis=1)
 
     return data_frame
