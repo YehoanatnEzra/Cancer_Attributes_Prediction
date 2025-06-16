@@ -9,7 +9,7 @@ Behind the scenes, out pipeline combines three modelling stages: a class-balance
 
 ## Team
 
-- Yehonatan Ezra  
-- Lior Zats  
-- Avi Ofir  
-- Shay Morad
+- Yehonatan Ezra - https://www.linkedin.com/in/yehonatanezra/  
+- Lior Zats - https://www.linkedin.com/in/lior-zats/
+- Avi Kfir  - https://www.linkedin.com/in/avi-klings/
+- Shay Morad - https://www.linkedin.com/in/shay-morad/
