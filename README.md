@@ -7,7 +7,8 @@ This project is a 48-hour group effort from the IML Hackathon 2025. It implement
 Behind the scenes, out pipeline combines three modelling stages: a class-balanced Random Forest (200 trees) for multi-label metastasis prediction, a Gradient-Boosting Regressor with quantile loss for tumour-size estimation, and an unsupervised stack of PCA → t-SNE → k-means (k = 5) for phenotype discovery. Every step from data ingestion and preprocessing through model inference and formatted output runs automatically, delivering clear, clinically relevant predictions without manual intervention. All findings and visualisations from the clustering stage are summarised in taskIII/project.pdf, ready for research or presentation.
 
 
-## Team
+Feedback & Contact
+If you find any issues, have questions, or suggestions for improvement, feel free to reach out:
 
 - Yehonatan Ezra - https://www.linkedin.com/in/yehonatanezra/  
 - Lior Zats - https://www.linkedin.com/in/lior-zats/
