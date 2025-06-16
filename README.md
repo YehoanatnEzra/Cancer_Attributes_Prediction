@@ -8,7 +8,7 @@ Behind the scenes, out pipeline combines three modelling stages: a class-balance
 '''
 
 
-## Feedback & Contact
+### Feedback & Contact
 If you find any issues, have questions, or suggestions for improvement, feel free to reach out:
 
 - Yehonatan Ezra - https://www.linkedin.com/in/yehonatanezra/  
