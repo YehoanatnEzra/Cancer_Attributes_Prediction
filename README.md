@@ -12,9 +12,9 @@ Behind the scenes, out pipeline combines three modelling stages: a class-balance
 - load_and_split.py - Loads raw data and enforces patient-level train/val splits. 
 - process_data.py - Cleans columns, imputes missing values, quantises features. 
 - labels_utils.py - Converts metastasis labels to/from multi-hot vectors. 
-- subtaskI/ - Code, requirements and predictions for Task I (metastasis). 
 - part1.py - Trains the Random-Forest model and writes predictions. 
-- predictions.csv - Pre-computed Task I predictions on test features. 
+- predictions.csv - Pre-computed Task I predictions on test features.
+- subtaskI/ - Code, requirements and predictions for Task I (metastasis). 
 - subtaskII/- Analogous structure for Task II (tumour size). 
 - subtaskIII/ - Unsupervised analysis notebook, PDF report and helper code. 
 
