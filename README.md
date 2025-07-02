@@ -1,6 +1,6 @@
 # Breast Cancer Attributes Prediction
 
-Imagine dropping a patient’s record into a command line and, moments later, learning not only the chance that cancer is present but also the subtype most likely to emerget.
+Imagine dropping a patient’s record into a command line and, moments later, learning not only the chance breast cancer is present but also where is likely to spread and how big the tumor is.
 
 This project implements a complete machine learning pipeline that begins by gathering and sanitising raw clinical data laboratory results, demographic details, surgical summaries, and more - and transforms them into a consistent, information-rich feature set. On this foundation we trained a model that, given the medical profile of a single patient, instantly returns the probability that the patient currently has cancer and when risk is high, the most likely cancer subtype or metastasis pattern. Every stage of the workflow from data ingestion and preprocessing through model inference and formatted output runs automatically, delivering clear, clinically relevant predictions without any manual intervention.
 
